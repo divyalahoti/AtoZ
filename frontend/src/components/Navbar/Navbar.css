@@ -1,0 +1,145 @@
+/* Import a luxury font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap');
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fffaf5; /* Clean Creamy White */
+  border-bottom: 1px solid #e8decb;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between; /* This fixes the stacking issue */
+  align-items: center;
+}
+
+/* LOGO STYLING */
+.logo-section {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: #b08d57; /* Gold/Bronze */
+  font-size: 24px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.logo-section span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  color: #8a7a66;
+  letter-spacing: 3px;
+  margin-top: -2px;
+}
+
+/* DESKTOP LINKS */
+.nav-links-desktop {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links-desktop a {
+  text-decoration: none;
+  color: #554a3c;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.nav-links-desktop a:hover, .active-link {
+  color: #b08d57 !important;
+}
+
+/* Animated Underline */
+.nav-links-desktop a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background: #b08d57;
+  transition: 0.3s;
+}
+
+.nav-links-desktop a:hover::after, .active-link::after {
+  width: 100%;
+}
+
+/* RIGHT SECTION */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-link {
+  color: #554a3c;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.user-link:hover {
+  color: #b08d57;
+}
+
+.mobile-toggle {
+  display: none; /* Hidden on Desktop */
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #554a3c;
+  cursor: pointer;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .nav-links-desktop {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-links-mobile {
+    display: flex;
+    flex-direction: column;
+    background: #fffaf5;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-top: 1px solid #e8decb;
+  }
+
+  .nav-links-mobile.open {
+    max-height: 300px;
+    padding: 20px 0;
+  }
+
+  .nav-links-mobile a {
+    text-decoration: none;
+    color: #554a3c;
+    padding: 12px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+  }
+}
