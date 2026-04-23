@@ -13,6 +13,30 @@ import './config/cloudinary.js'
 
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  "http://localhost:5000",
+  "https://atoz-fronted.vercel.app/",
+  "https://atoz-backend-kohl.vercel.app/" 
+
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow non-browser tools like Postman
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.error(' CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // if using cookies or Authorization headers
+};
+
 dotenv.config();
 
 const app = express();
