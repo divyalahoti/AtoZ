@@ -11,6 +11,8 @@ import { FiUploadCloud, FiShoppingBag, FiDollarSign, FiLayers } from "react-icon
 const AddProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const backendurl=import.meta.env.VITE_BACKENDURL;
+
 
   const [data, setData] = useState({
     name: "",
@@ -25,7 +27,7 @@ const AddProduct = () => {
     AOS.init({ duration: 1000, once: true });
 
     if (id) {
-      axios.get(`http://localhost:5000/api/products/${id}`)
+      axios.get(backendurl+`/api/products/${id}`)
         .then(res => {
           setData({
             name: res.data.name,
@@ -57,14 +59,14 @@ const AddProduct = () => {
       if (image) form.append("image", image);
 
       if (id) {
-        await axios.put(`http://localhost:5000/api/products/${id}`, form);
+        await axios.put(backendurl+`/api/products/${id}`, form);
         toast.success("Product Updated ✨");
       } else {
         if (!image) {
           toast.warn("Please upload image 💎");
           return;
         }
-        await axios.post("http://localhost:5000/api/products/add", form);
+        await axios.post(backendurl+"/api/products/add", form);
         toast.success("Product Added ✨");
       }
 

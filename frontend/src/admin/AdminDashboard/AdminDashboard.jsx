@@ -6,9 +6,10 @@ import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
+  const backendurl = import.meta.env.VITE_BACKENDURL;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products")
+    axios.get(backendurl + "/api/products")
       .then(res => setProducts(res.data));
   }, []);
 

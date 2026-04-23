@@ -15,11 +15,12 @@ const ListProduct = () => {
   const navigate = useNavigate();
   const [showDelete, setShowDelete] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const backendurl = import.meta.env.VITE_BACKENDURL;
 
   const itemsPerPage = 10;
 
   const fetchData = async () => {
-    const res = await axios.get("http://localhost:5000/api/products");
+    const res = await axios.get(backendurl + "/api/products");
     setProducts(res.data);
   };
 
@@ -30,7 +31,7 @@ const ListProduct = () => {
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/products/${selectedId}`);
+      await axios.delete(backendurl + `/api/products/${selectedId}`);
       setShowDelete(false);
       fetchData();
       toast.success("Product Deleted Successfully");

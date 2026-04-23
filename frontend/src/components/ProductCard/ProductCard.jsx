@@ -9,12 +9,12 @@ const ProductCard = () => {
   const location = useLocation();
   const product = location.state;
   const [relatedProducts, setRelatedProducts] = useState([]);
-
+  const backendurl = import.meta.env.VITE_BACKENDURL;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (product) {
-      axios.get(`http://localhost:5000/api/products/related/${product.category}/${product._id}`)
+      axios.get(backendurl + `/api/products/related/${product.category}/${product._id}`)
         .then((res) => setRelatedProducts(res.data))
         .catch((err) => console.log(err));
       console.log(relatedProducts)
@@ -50,17 +50,6 @@ const ProductCard = () => {
             src={selectedImage}
             alt={product.name}
           />
-
-          {/* <div className="thumbnail-row">
-            {[product.image, product.image, product.image].map((img, i) => (
-              <img
-                key={i}
-                src={`http://localhost:5000/uploads/${img}`}
-                alt=""
-                onClick={() => setSelectedImage(img)}
-              />
-            ))}
-          </div> */}
         </div>
 
         {/* RIGHT - DETAILS */}
@@ -106,31 +95,31 @@ const ProductCard = () => {
       {/* SUGGESTION SECTION */}
       <div className="suggestion">
 
-  <div className="suggestion-header">
-    <h2>You May Also Like</h2>
-    <p>Discover similar products from our collection</p>
-  </div>
-
-  <div className="suggestion-grid">
-    {relatedProducts.map((item) => (
-      <div
-        className="suggest-card"
-        key={item._id}
-        
-      >
-        <div className="img-box">
-          <img src={item.image} alt={item.name} />
+        <div className="suggestion-header">
+          <h2>You May Also Like</h2>
+          <p>Discover similar products from our collection</p>
         </div>
 
-        <div className="card-info">
-          <h4>{item.name}</h4>
-          <p className="price">₹{item.price}</p>
+        <div className="suggestion-grid">
+          {relatedProducts.map((item) => (
+            <div
+              className="suggest-card"
+              key={item._id}
+
+            >
+              <div className="img-box">
+                <img src={item.image} alt={item.name} />
+              </div>
+
+              <div className="card-info">
+                <h4>{item.name}</h4>
+                <p className="price">₹{item.price}</p>
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
-    ))}
-  </div>
-
-</div>
     </div>
   );
 };

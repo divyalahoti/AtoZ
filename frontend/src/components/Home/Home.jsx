@@ -18,7 +18,7 @@ import Footer from './../Footer/Footer';
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const backendurl = import.meta.env.VITE_BACKENDURL;
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -28,7 +28,7 @@ const Home = () => {
       offset: 80,
     });
 
-    axios.get("http://localhost:5000/api/products")
+    axios.get(backendurl + "/api/products")
       .then(res => {
         setProducts(res.data);
         setLoading(false);

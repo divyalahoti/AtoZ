@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const Contact = () => {
 
-
+  const backendurl = import.meta.env.VITE_BACKENDURL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const Contact = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/contact/contact", formData);
+      await axios.post(backendurl + "/api/contact/contact", formData);
 
       toast.success("Message sent successfully 💌");
       e.target.reset();
@@ -176,12 +176,12 @@ const Contact = () => {
           }
         ].map((item, index) => (
           <div
-  className={`faq-item ${activeIndex === index ? "active" : ""}`}
-  key={index}
-  
+            className={`faq-item ${activeIndex === index ? "active" : ""}`}
+            key={index}
 
-  onClick={() => toggleFAQ(index)}
->
+
+            onClick={() => toggleFAQ(index)}
+          >
             <div className="faq-question">
               <h4>{item.q}</h4>
               <span>{activeIndex === index ? "-" : "+"}</span>

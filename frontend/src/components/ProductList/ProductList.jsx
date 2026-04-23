@@ -5,17 +5,19 @@ import "aos/dist/aos.css";
 import "./ProductList.css";
 import { useNavigate } from "react-router-dom";
 
+
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const navigate = useNavigate();
+  const backendurl=import.meta.env.VITE_BACKENDURL;
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
 
     axios
-      .get("http://localhost:5000/api/products")
+      .get(backendurl+"/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);
