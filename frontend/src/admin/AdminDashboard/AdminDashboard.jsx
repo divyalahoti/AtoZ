@@ -6,6 +6,7 @@ import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
   const backendurl = import.meta.env.VITE_BACKENDURL;
 
   useEffect(() => {
@@ -16,28 +17,32 @@ const AdminDashboard = () => {
   return (
     <div className="admin-layout">
 
+      {/* OVERLAY */}
+      {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
+
       {/* SIDEBAR */}
-      <div className="sidebar">
+      <div className={`sidebar ${menuOpen ? "open" : ""}`}>
         <h2 className="logo">Diya Creation</h2>
 
-        <NavLink to="/list" className="nav-link">
+        <NavLink to="/list" className="nav-link" onClick={() => setMenuOpen(false)}>
           <FiBox /> Products
         </NavLink>
 
-        <NavLink to="/add-product" className="nav-link">
+        <NavLink to="/add-product" className="nav-link" onClick={() => setMenuOpen(false)}>
           <FiPlus /> Add Product
         </NavLink>
       </div>
 
-      {/* RIGHT SIDE */}
+      {/* MAIN */}
       <div className="main-wrapper">
 
-        {/* HEADER */}
         <div className="admin-header">
+          <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </button>
           <h2>Admin Panel</h2>
         </div>
 
-        {/* CARDS */}
         <div className="cards">
           <div className="card">
             <h4>Total Products</h4>
@@ -55,7 +60,6 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* CHILD ROUTES */}
         <div className="page-content">
           <Outlet />
         </div>

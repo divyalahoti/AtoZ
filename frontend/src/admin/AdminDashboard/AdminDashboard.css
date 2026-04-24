@@ -1,21 +1,22 @@
-/* LAYOUT */
+/* ===== LAYOUT ===== */
 .admin-layout {
     display: flex;
     min-height: 100vh;
     background: #f5f6fa;
 }
 
-/* SIDEBAR */
+/* ===== SIDEBAR ===== */
 .sidebar {
     width: 240px;
     background: linear-gradient(180deg, #000, #1a1a1a);
     color: #fff;
     padding: 30px 20px;
     position: fixed;
-    /* ✅ FIX */
     height: 100vh;
     left: 0;
     top: 0;
+    transition: 0.3s;
+    z-index: 1000;
 }
 
 .logo {
@@ -32,6 +33,7 @@
     text-decoration: none;
     border-radius: 8px;
     margin-bottom: 10px;
+    transition: 0.3s;
 }
 
 .nav-link.active,
@@ -40,55 +42,88 @@
     color: #c59d5f;
 }
 
-/* RIGHT SIDE */
+/* ===== MAIN ===== */
 .main-wrapper {
     margin-left: 240px;
-    /* ✅ VERY IMPORTANT */
-    padding: 40px;
+    padding: 30px;
     width: 100%;
+    transition: 0.3s;
 }
 
 /* HEADER */
 .admin-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     background: #fff;
-    padding: 20px;
+    padding: 15px 20px;
     border-radius: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* MENU BUTTON */
+.menu-btn {
+    display: none;
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 /* CARDS */
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
-/* CARD */
 .card {
     background: #fff;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
     border-top: 4px solid #c59d5f;
+    transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 
-.card h4 {
-    color: #777;
-    margin-bottom: 10px;
+/* ===== OVERLAY ===== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
 }
 
-.card p {
-    font-size: 28px;
-    font-weight: bold;
-}
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
 
-/* PAGE CONTENT */
-.page-content {
-    margin-top: 30px;
+    .menu-btn {
+        display: block;
+    }
+
+    .sidebar {
+        left: -100%;
+        width: 220px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .main-wrapper {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }

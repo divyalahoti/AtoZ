@@ -109,6 +109,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .premium-btn:hover {
@@ -152,7 +153,9 @@
   text-align: center;
   margin-top: 10px;
 }
-
+.upload-zone{
+  margin-top: 10px;
+}
 .p-cat {
   font-size: 10px;
   color: var(--gold);
