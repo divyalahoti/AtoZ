@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
 import Home from './components/Home/Home';
 import AddProduct from './admin/AddProduct/AddProduct';
 import ProductList from './components/ProductList/ProductList';
@@ -11,20 +9,18 @@ import About from './components/About/About';
 import Testimonials from './components/Testimonials/Testimonials';
 import ProductCard from './components/ProductCard/ProductCard';
 import AdminDashboard from './admin/AdminDashboard/AdminDashboard';
-
 import { ToastContainer } from "react-toastify";
 import { FaWhatsapp } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from './admin/Layout';
 import './App.css'
 import Login from './admin/Login/Login';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
     <BrowserRouter>
-
       <Layout>
-
         {/* FLOAT BUTTON */}
         <a
           href="https://wa.me/919428380108"
@@ -36,7 +32,7 @@ const App = () => {
         </a>
 
         <ToastContainer position="top-right" autoClose={3000} />
-
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -54,7 +50,6 @@ const App = () => {
         </Routes>
 
       </Layout>
-
     </BrowserRouter>
   );
 };

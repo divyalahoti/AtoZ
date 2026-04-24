@@ -5,8 +5,12 @@
   align-items: center;
   justify-content: center;
 
+  padding-top: 80px;
+  /* 🔥 push below navbar */
+  padding-left: 15px;
+  padding-right: 15px;
+
   background: linear-gradient(135deg, #f2f0f0, #eed7d3);
-  padding: 20px;
 }
 
 /* ===== CARD ===== */
@@ -64,8 +68,10 @@
   display: flex;
   align-items: center;
 
-  height: 45px;              /* 🔥 fixed height */
-  padding: 0 12px;           /* remove vertical padding */
+  height: 45px;
+  /* 🔥 fixed height */
+  padding: 0 12px;
+  /* remove vertical padding */
 
   background: #f1f1f1;
   border-radius: 8px;
@@ -76,21 +82,36 @@
 .input-icon {
   font-size: 16px;
   color: #9aa0a6;
-  margin-right: 8px;
+  margin-right: 10px;
   display: flex;
-  align-items: center;       /* center icon vertically */
+  align-items: center;
+  /* center icon vertically */
 }
 
 /* INPUT */
 .input-group input {
   flex: 1;
-  height: 100%;              /* match parent height */
+  height: 100%;
   border: none;
   outline: none;
   background: transparent;
 
   font-size: 14px;
   color: #333;
+
+  padding-left: 5px;
+
+  line-height: 45px;
+  /* 🔥 KEY FIX */
+}
+
+.input-group input::placeholder {
+  color: #9aa0a6;
+  font-size: 14px;
+  line-height: 45px;
+  margin: 12px;
+  word-spacing: 20px;
+  /* 🔥 MATCH HEIGHT */
 }
 
 /* ===== BUTTON ===== */
@@ -102,7 +123,7 @@
   border: none;
   border-radius: 10px;
 
- background: #b08d57;
+  background: #b08d57;
   color: white;
 
   font-size: 16px;

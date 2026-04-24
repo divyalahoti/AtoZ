@@ -14,11 +14,13 @@ import diamond from '../../assets/diamond.jpg'
 import trust from '../../assets/trust.jpg';
 import Navbar from './../Navbar/Navbar';
 import Footer from './../Footer/Footer';
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const backendurl = import.meta.env.VITE_BACKENDURL;
+  const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -78,7 +80,12 @@ const Home = () => {
       <div className="image-wrapper">
         <img src={item.image} alt={item.name} />
         <div className="card-overlay">
-          <button className="quick-add">Quick View</button>
+          <button 
+  className="quick-add"
+  onClick={() => navigate("/productcard", { state: item })}
+>
+  Quick View
+</button>
         </div>
       </div>
       <div className="product-details">
@@ -86,7 +93,7 @@ const Home = () => {
         <h3 className="p-name">{item.name}</h3>
         <div className="p-footer">
           <span className="p-price">₹{item.price.toLocaleString('en-IN')}</span>
-          <button className="add-to-cart-icon">+</button>
+          
         </div>
       </div>
     </div>

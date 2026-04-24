@@ -37,7 +37,7 @@ const Login = () => {
           {/* EMAIL */}
           <label>Email</label>
           <div className="input-group">
-            <FaEnvelope className="input-icon" />
+            {/* <FaEnvelope className="input-icon" /> */}
             <input
               type="email"
               name="email"
@@ -50,7 +50,7 @@ const Login = () => {
           {/* PASSWORD */}
           <label>Password</label>
           <div className="input-group">
-            <FaLock className="input-icon" />
+            {/* <FaLock className="input-icon" /> */}
             <input
               type="password"
               name="password"
