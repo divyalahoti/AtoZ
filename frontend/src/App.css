@@ -274,6 +274,7 @@
   box-sizing: border-box;
 }
 
-body {
-  overflow-x: hidden; /* 🔥 removes right side scroll */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
