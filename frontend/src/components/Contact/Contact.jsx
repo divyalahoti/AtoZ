@@ -50,14 +50,14 @@ const Contact = () => {
 
       {/* HERO */}
       <section className="contact-hero">
-        <div className="overlay">
+   
           <h1 data-aos="fade-down" data-aos-duration="1200">
             Contact Us
           </h1>
           <p data-aos="fade-up" data-aos-delay="300">
             We’d love to hear from you 💎
           </p>
-        </div>
+        
 
       </section>
 

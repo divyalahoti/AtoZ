@@ -15,6 +15,9 @@ import trust from '../../assets/trust.jpg';
 import Navbar from './../Navbar/Navbar';
 import Footer from './../Footer/Footer';
 import { useNavigate } from "react-router-dom";
+import { FaGem } from "react-icons/fa";
+import { MdVerified } from "react-icons/md";
+import { FaHandshake } from "react-icons/fa";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -80,12 +83,12 @@ const Home = () => {
       <div className="image-wrapper">
         <img src={item.image} alt={item.name} />
         <div className="card-overlay">
-          <button 
-  className="quick-add"
-  onClick={() => navigate("/productcard", { state: item })}
->
-  Quick View
-</button>
+          <button
+            className="quick-add"
+            onClick={() => navigate("/productcard", { state: item })}
+          >
+            Quick View
+          </button>
         </div>
       </div>
       <div className="product-details">
@@ -93,7 +96,7 @@ const Home = () => {
         <h3 className="p-name">{item.name}</h3>
         <div className="p-footer">
           <span className="p-price">₹{item.price.toLocaleString('en-IN')}</span>
-          
+
         </div>
       </div>
     </div>
@@ -145,28 +148,27 @@ const Home = () => {
           </div>
         </div>
 
+
         {/* TRUST REASONS */}
         <div className="trust-section-custom">
-
-          <h2 className="section-title" data-aos="fade-up">Why Diya Creation ?</h2>
+          <h2 className="section-title" data-aos="fade-up">Why Diya Creation?</h2>
           <div className="line mx-auto"></div>
+
           <div className="trust-container">
-
-            <div className="trust-item" data-aos="zoom-in-up" data-aos-delay="100">
-              <img src={hallmark} alt="" className="trust-icon" />
-              <p>100% Hallmarked Jewellery</p>
+            <div className="trust-item" data-aos="fade-up" data-aos-delay="100">
+              <MdVerified className="icon" />
+              <p>100% Hallmarked</p>
             </div>
 
-            <div className="trust-item" data-aos="zoom-in-up" data-aos-delay="200">
-              <img src={trust} alt="" />
-              <p>Trust of Diya Creation</p>
+            <div className="trust-item" data-aos="fade-up" data-aos-delay="200">
+              <FaHandshake className="icon" />
+              <p>Secure & Trusted</p>
             </div>
 
-            <div className="trust-item" data-aos="zoom-in-up" data-aos-delay="300">
-              <img src={diamond} alt="" />
-              <p>Certified Diamond Jewellery</p>
+            <div className="trust-item" data-aos="fade-up" data-aos-delay="300">
+              <FaGem className="icon" />
+              <p>Certified Diamonds</p>
             </div>
-
           </div>
         </div>
 
