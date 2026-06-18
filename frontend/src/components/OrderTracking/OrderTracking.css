@@ -1,0 +1,90 @@
+.track-page { background: var(--white); min-height: 100vh; }
+.track-hero {
+  text-align: center; padding: 3.5rem 2rem 2.5rem;
+  background: linear-gradient(135deg, var(--black), #1a1308);
+}
+.track-hero .section-title, .track-hero p { color: var(--white); }
+.track-hero p { color: rgba(255,255,255,0.55); margin-top: 0.5rem; font-size: 0.9rem; }
+
+.track-container { max-width: 760px; margin: 0 auto; padding: 3rem 2rem; }
+
+.track-search {
+  display: flex; gap: 0; margin-bottom: 0.75rem;
+}
+.track-search input {
+  flex: 1; padding: 0.9rem 1.25rem;
+  border: 1px solid rgba(0,0,0,0.12); border-right: none;
+  font-size: 0.9rem; font-family: var(--font-body);
+  background: var(--white); color: var(--black);
+}
+body.dark-mode .track-search input { background: #111; color: var(--white); border-color: rgba(255,255,255,0.12); }
+.track-search input::placeholder { color: var(--gray); }
+.track-search input:focus { outline: none; border-color: var(--gold); }
+
+.track-demo-hint { font-size: 0.8rem; color: var(--gray); margin-bottom: 2.5rem; }
+.track-demo-hint button { background: none; border: none; color: var(--gold); cursor: pointer; font-family: var(--font-body); font-size: 0.8rem; text-decoration: underline; }
+
+.track-result {
+  background: var(--beige); border: 1px solid rgba(201,168,76,0.2);
+  padding: 2rem; animation: fadeInUp 0.5s ease;
+}
+body.dark-mode .track-result { background: #0f0d09; }
+
+.track-result-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
+}
+.track-result-header h3 { font-family: var(--font-display); font-size: 1.3rem; }
+.track-result-header p { color: var(--gray); font-size: 0.88rem; margin-top: 0.25rem; }
+.track-dates { font-size: 0.78rem !important; margin-top: 0.4rem !important; }
+.track-status-badge {
+  background: var(--gold-gradient); color: var(--black);
+  padding: 0.4rem 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+}
+
+.track-timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
+
+.track-step {
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 0 1.25rem; position: relative;
+}
+
+.track-step-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--gray); background: var(--white);
+  z-index: 1; flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+body.dark-mode .track-step-icon { background: #111; border-color: rgba(255,255,255,0.12); }
+
+.track-step.done .track-step-icon { background: var(--gold); border-color: var(--gold); color: var(--black); }
+.track-step.current .track-step-icon { border-color: var(--gold); color: var(--gold); }
+
+.track-connector {
+  position: absolute; left: 19px; top: 40px;
+  width: 2px; height: calc(100% + 16px);
+  background: rgba(0,0,0,0.08); z-index: 0;
+}
+body.dark-mode .track-connector { background: rgba(255,255,255,0.08); }
+.track-step.done .track-connector { background: var(--gold); }
+
+.track-step-info { padding: 0.5rem 0 2rem; }
+.track-step-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--black); margin-bottom: 0.2rem; }
+body.dark-mode .track-step-info h4 { color: var(--white); }
+.track-step:not(.done):not(.current) .track-step-info h4 { color: var(--gray); }
+.track-step-info p { font-size: 0.82rem; color: var(--gray); }
+.track-step-info span { font-size: 0.75rem; color: var(--gold); margin-top: 0.2rem; display: block; }
+
+.track-help {
+  text-align: center; padding-top: 1.5rem;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  font-size: 0.85rem; color: var(--gray);
+}
+.track-help a { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .track-search { flex-direction: column; }
+  .track-search input { border-right: 1px solid rgba(0,0,0,0.12); }
+}

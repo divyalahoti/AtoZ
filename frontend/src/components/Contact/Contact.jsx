@@ -1,210 +1,93 @@
-import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import "./Contact.css";
-import axios from "axios";
+import React, { useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import { FiMail, FiPhone, FiMapPin, FiSend, FiInstagram, FiFacebook } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { toast } from "react-toastify";
+import "./Contact.css";
 
 const Contact = () => {
-
-  const backendurl = import.meta.env.VITE_BACKENDURL;
-
-  const handleSubmit = async (e) => {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleSubmit = e => {
     e.preventDefault();
-
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    };
-
-    try {
-      await axios.post(backendurl + "/api/contact/contact", formData);
-
-      toast.success("Message sent successfully 💌");
-      e.target.reset();
-    } catch (err) {
-      toast.error("Something went wrong ❌");
-    }
-  };
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out-cubic",
-      once: true,
-      mirror: false,
-      offset: 80,
-      delay: 50,
-    });
-  }, []);
-
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    toast.success("Message sent! We'll reply within 24 hours 💌");
+    setForm({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
-    <div className="contact">
+    <div className="contact-page">
+      <Navbar />
+      <div className="contact-hero">
+        <span className="section-label">Get In Touch</span>
+        <h1 className="section-title">Contact <em>Us</em></h1>
+        <p>We'd love to hear from you. We're here to help!</p>
+      </div>
 
-      {/* HERO */}
-      <section className="contact-hero">
-   
-          <h1 data-aos="fade-down" data-aos-duration="1200">
-            Contact Us
-          </h1>
-          <p data-aos="fade-up" data-aos-delay="300">
-            We’d love to hear from you 💎
-          </p>
-        
-
-      </section>
-
-      {/* QUICK CONTACT CARDS */}
-      <section className="quick-contact">
-        <div className="contact-card" data-aos="fade-up" data-aos-delay="0">
-          <h4>📞 Call Us</h4>
-          <p>+91 98765 43210</p>
-        </div>
-
-        <div className="contact-card" data-aos="fade-up" data-aos-delay="150">
-          <h4>📧 Email</h4>
-          <p>jewellux@gmail.com</p>
-        </div>
-
-        <div className="contact-card" data-aos="fade-up" data-aos-delay="300">
-          <h4>📍 Location</h4>
-          <p>Idar, Gujarat</p>
-        </div>
-      </section>
-
-      {/* CONTACT FORM */}
-      <section className="contact-container">
-
-        {/* LEFT SIDE */}
-        <div className="contact-info" data-aos="fade-right" data-aos-duration="1000">
-
-          <h2>Get in Touch</h2>
-          <p>We’re here to help and answer any question you might have.</p>
-
-          <div className="info-cards">
-
-            <div className="info-item" data-aos="fade-up" data-aos-delay="100">
-              <span>📍</span>
-              <div>
-                <h5>Location</h5>
-                <p>Idar, Gujarat, India</p>
-              </div>
+      <div className="contact-container">
+        <div className="contact-info">
+          <h3>Let's Talk</h3>
+          <p>Have a question about our jewellery? Want to place a bulk order? Or just want to say hello? We're always happy to hear from you.</p>
+          <div className="contact-cards">
+            <a href="mailto:info@atozjewellery.com" className="contact-card">
+              <FiMail /><div><strong>Email Us</strong><span>info@atozjewellery.com</span></div>
+            </a>
+            <a href="tel:+919428380108" className="contact-card">
+              <FiPhone /><div><strong>Call Us</strong><span>+91 94283 80108</span></div>
+            </a>
+            <div className="contact-card">
+              <FiMapPin /><div><strong>Visit Us</strong><span>Himatnagar, Gujarat, India</span></div>
             </div>
-
-            <div className="info-item" data-aos="fade-up" data-aos-delay="200">
-              <span>📞</span>
-              <div>
-                <h5>Phone</h5>
-                <p>+91 98765 43210</p>
-              </div>
-            </div>
-
-            <div className="info-item" data-aos="fade-up" data-aos-delay="300">
-              <span>📧</span>
-              <div>
-                <h5>Email</h5>
-                <p>jewellux@gmail.com</p>
-              </div>
-            </div>
-
+            <a href="https://wa.me/919428380108" target="_blank" rel="noreferrer" className="contact-card whatsapp">
+              <FaWhatsapp /><div><strong>WhatsApp</strong><span>Chat directly with us</span></div>
+            </a>
           </div>
+          <div className="contact-hours">
+            <h4>Business Hours</h4>
+            <p>Monday – Saturday: 10 AM – 7 PM</p>
+            <p>Sunday: 11 AM – 5 PM</p>
+          </div>
+          <div className="contact-social">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer"><FiInstagram /></a>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer"><FiFacebook /></a>
+            <a href="https://wa.me/919428380108" target="_blank" rel="noreferrer"><FaWhatsapp /></a>
+          </div>
+        </div>
 
-          <button
-            className="whatsapp-btn"
-            data-aos="zoom-in-up"
-            onClick={() => window.open("https://wa.me/919428380108", "_blank")}
-          >
-            💬 Chat on WhatsApp
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <h3>Send a Message</h3>
+          <div className="cf-grid">
+            <div className="cf-group">
+              <label>Your Name *</label>
+              <input name="name" value={form.name} onChange={handleChange} placeholder="Full name" required />
+            </div>
+            <div className="cf-group">
+              <label>Email Address *</label>
+              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" required />
+            </div>
+            <div className="cf-group full">
+              <label>Subject</label>
+              <input name="subject" value={form.subject} onChange={handleChange} placeholder="How can we help?" />
+            </div>
+            <div className="cf-group full">
+              <label>Message *</label>
+              <textarea name="message" value={form.message} onChange={handleChange} placeholder="Write your message here..." rows={5} required></textarea>
+            </div>
+          </div>
+          <button type="submit" className="btn-primary">
+            <FiSend /> Send Message
           </button>
-
-
-        </div>
-
-        {/* RIGHT SIDE FORM */}
-        <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-left" data-aos-delay="200">
-          <input name="name" type="text" placeholder="Your Name" required />
-          <input name="email" type="email" placeholder="Your Email" required />
-          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
         </form>
+      </div>
 
-      </section>
-
-      {/* WORKING HOURS */}
-      <section className="working-hours" data-aos="fade-up" data-aos-duration="900">
-        <h2>Working Hours</h2>
-        <p>Mon - Sat: 10:00 AM - 8:00 PM</p>
-        <p>Sunday: Closed</p>
-      </section>
-
-      {/* MAP */}
-      <section className="map-section" data-aos="fade-up" data-aos-delay="100">
+      <div className="contact-map">
         <iframe
-          title="map"
-          src="https://maps.google.com/maps?q=idar%20gujarat&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          allowFullScreen
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29471.12!2d72.9729!3d23.5998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e802a8e2a9b2b%3A0x7a1c7c3a3f9e8c0!2sHimatnagar%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          allowFullScreen="" loading="lazy" title="AtoZ Location"
         ></iframe>
-      </section>
+      </div>
 
-      {/* FAQ */}
-      <section className="faq">
-        <h2 >Frequently Asked Questions</h2>
-
-        {[
-          {
-            q: "Do you offer custom jewellery?",
-            a: "Yes, we create custom designs based on your requirements."
-          },
-          {
-            q: "How long does delivery take?",
-            a: "Delivery usually takes 3–5 working days across India."
-          },
-          {
-            q: "Do you provide cash on delivery?",
-            a: "Yes, COD is available for selected locations."
-          },
-          {
-            q: "Are your products certified?",
-            a: "Yes, all our jewellery is quality checked and certified."
-          }
-        ].map((item, index) => (
-          <div
-            className={`faq-item ${activeIndex === index ? "active" : ""}`}
-            key={index}
-
-
-            onClick={() => toggleFAQ(index)}
-          >
-            <div className="faq-question">
-              <h4>{item.q}</h4>
-              <span>{activeIndex === index ? "-" : "+"}</span>
-            </div>
-
-            <div className="faq-answer">
-              <p>{item.a}</p>
-            </div>
-          </div>
-        ))}
-
-      </section>
-
-      {/* SOCIAL LINKS */}
-      <section className="social-links" data-aos="fade-up" data-aos-delay="200">
-        <p>Follow Us</p>
-        <div>
-          <span>📸 Instagram</span>
-          <span>👍 Facebook</span>
-          <span>▶ YouTube</span>
-        </div>
-      </section>
-
+      <Footer />
     </div>
   );
 };

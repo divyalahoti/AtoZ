@@ -1,81 +1,113 @@
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FaInstagram, FaFacebook, FaYoutube, FaWhatsapp, FaPinterest } from "react-icons/fa";
+import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import "./Footer.css";
-import  AOS  from 'aos';
-
 
 const Footer = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-in-out-cubic",
-      once: true,
-      offset: 60,
-    });
-  }, []);
+  const currentYear = new Date().getFullYear();
+
   return (
-
-
-    <footer className="footer" data-aos="fade-up" data-aos-duration="1000">
-
-      {/* TOP */}
-      <div className="footer-top">
-        <div className="footer-brand" data-aos="fade-right" data-aos-delay="100">
-          <h2>DIYA CREATION</h2>
-          <p>
-            Crafting timeless elegance with premium jewellery designs.
-            Luxury that speaks your style.
-          </p>
+    <footer className="footer">
+      {/* Newsletter Strip */}
+      <div className="footer-newsletter-strip">
+        <div className="newsletter-inner">
+          <div>
+            <span className="section-label">Stay Connected</span>
+            <h3>Join Our Jewellery Circle</h3>
+          </div>
+          <div className="newsletter-form">
+            <input type="email" placeholder="Your email address" />
+            <button className="btn-primary">Subscribe</button>
+          </div>
         </div>
+      </div>
 
-        {/* LINKS */}
-        <div className="footer-links">
-          <div data-aos="fade-up" data-aos-delay="150">
-
-            <h4>Shop</h4>
-            <p>Necklace</p>
-            <p>Rings</p>
-            <p>Bangles</p>
-            <p>Earrings</p>
+      {/* Main Footer */}
+      <div className="footer-main">
+        <div className="footer-grid">
+          {/* Brand */}
+          <div className="footer-brand">
+            <div className="footer-logo">
+              <span className="logo-az">AtoZ</span>
+              <span className="logo-jewellery">JEWELLERY</span>
+            </div>
+            <p>Premium artificial jewellery crafted with finesse. Oxidised collections, stone work, and contemporary designs for every occasion.</p>
+            <div className="footer-social">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebook /></a>
+              <a href="https://wa.me/919428380108" target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><FaYoutube /></a>
+              <a href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest"><FaPinterest /></a>
+            </div>
           </div>
 
-          <div data-aos="fade-up" data-aos-delay="250">
+          {/* Collections */}
+          <div className="footer-col">
+            <h4>Collections</h4>
+            <ul>
+              <li><Link to="/collection?category=Necklace">Necklaces</Link></li>
+              <li><Link to="/collection?category=Ring">Rings</Link></li>
+              <li><Link to="/collection?category=Bangles">Bangles & Kadas</Link></li>
+              <li><Link to="/collection?category=Earrings">Earrings & Jhumkas</Link></li>
+              <li><Link to="/collection?category=Payal">Payals & Anklets</Link></li>
+              <li><Link to="/collection?category=Bracelet">Bracelets</Link></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div className="footer-col">
             <h4>Company</h4>
-            <p>About Us</p>
-            <p>Careers</p>
-            <p>Contact</p>
-            <p>Blog</p>
+            <ul>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/track-order">Track Order</Link></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Wholesale</a></li>
+            </ul>
           </div>
 
-          <div data-aos="fade-up" data-aos-delay="350">
+          {/* Support */}
+          <div className="footer-col">
             <h4>Support</h4>
-            <p>Help Center</p>
-            <p>Shipping</p>
-            <p>Returns</p>
-            <p>Privacy Policy</p>
+            <ul>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchange</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><Link to="/auth">My Account</Link></li>
+            </ul>
           </div>
-        </div>
 
-        {/* NEWSLETTER */}
-        <div className="footer-newsletter" data-aos="fade-left" data-aos-delay="200">
-          <h4>Subscribe</h4>
-          <p>Get latest offers & updates</p>
-          <div className="newsletter-box" data-aos="zoom-in" data-aos-delay="300">
-            <input type="email" placeholder="Enter your email" />
-            <button>→</button>
+          {/* Contact */}
+          <div className="footer-col">
+            <h4>Contact</h4>
+            <ul className="contact-list">
+              <li><FiMail /><a href="mailto:info@atozjewellery.com">info@atozjewellery.com</a></li>
+              <li><FiPhone /><a href="tel:+919428380108">+91 94283 80108</a></li>
+              <li><FiMapPin /><span>Himatnagar, Gujarat, India</span></li>
+            </ul>
+            <div className="footer-trust">
+              <div className="trust-badge">🔒 Secure Payments</div>
+              <div className="trust-badge">✨ Quality Assured</div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* BOTTOM */}
-      <div className="footer-bottom" data-aos="fade-up" data-aos-delay="200">
-        <p>© 2026 DIYA CREATION. All rights reserved.</p>
-        <div className="socials">
-          <span data-aos="fade-up" data-aos-delay="300">Instagram</span>
-          <span data-aos="fade-up" data-aos-delay="350">Facebook</span>
-          <span data-aos="fade-up" data-aos-delay="400">Twitter</span>
+      {/* Bottom */}
+      <div className="footer-bottom">
+        <div className="footer-bottom-inner">
+          <p>© {currentYear} AtoZ Jewellery. All rights reserved.</p>
+          <div className="payment-icons">
+            <span>💳 UPI</span>
+            <span>💳 Visa</span>
+            <span>💳 Mastercard</span>
+            <span>💳 Razorpay</span>
+          </div>
         </div>
       </div>
-
     </footer>
   );
 };

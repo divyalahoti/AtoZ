@@ -1,179 +1,117 @@
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import "./About.css";
-import { useNavigate } from "react-router-dom";
 
 const About = () => {
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out-cubic",
-      once: true,
-      mirror: false,
-      offset: 80,
-      delay: 50,
-    });
-  }, []);
-
+  const team = [
+    { name: "Aarav Shah", role: "Founder & Creative Director", initial: "A" },
+    { name: "Priya Patel", role: "Head of Design", initial: "P" },
+    { name: "Rohit Joshi", role: "Operations Manager", initial: "R" },
+    { name: "Meera Desai", role: "Customer Relations", initial: "M" },
+  ];
+  const values = [
+    { icon: "💎", title: "Quality First", desc: "Every piece is hand-inspected for quality before dispatch" },
+    { icon: "🌸", title: "Artisan Crafted", desc: "Supporting traditional jewellery artisans from Gujarat" },
+    { icon: "♻️", title: "Sustainable", desc: "Eco-conscious packaging and responsible sourcing" },
+    { icon: "❤️", title: "Customer Love", desc: "10,000+ happy customers across India" },
+  ];
   return (
-    <div className="about">
+    <div className="about-page">
+      <Navbar />
 
-      {/* HERO */}
+      {/* Hero */}
       <section className="about-hero">
-        <div className="hero-overlay">
-          <h1 data-aos="fade-down" data-aos-duration="1200">
-            About Diya Creation
-          </h1>
-
-          <p data-aos="fade-up" data-aos-delay="300">
-            Timeless Jewellery. Crafted with Passion.
-          </p>
-
-
+        <div className="about-hero-content">
+          <span className="section-label">Est. 2015 — Himatnagar, Gujarat</span>
+          <h1 className="section-title">Our <em>Story</em></h1>
+          <p>From a small workshop to India's loved artificial jewellery brand</p>
         </div>
       </section>
 
-      {/* STORY */}
-      <section className="about-section">
-
-        <div className="about-img" data-aos="fade-right" data-aos-duration="1200">
-          <img
-            src="https://images.unsplash.com/photo-1608042314453-ae338d80c427"
-            alt="Jewellery"
-          />
-        </div>
-
-        <div className="about-text" data-aos="fade-left" data-aos-delay="200">
-          <h2>Our Story</h2>
-          <p>
-            At Diya Creation, we believe jewellery is more than just an accessory —
-            it is an expression of identity, elegance, and emotion.
-          </p>
-          <p>
-            Every piece is thoughtfully designed to blend tradition with modern luxury,
-            ensuring timeless beauty for every occasion.
-          </p>
-        </div>
-
-      </section>
-
-      {/* FEATURES */}
-      <section className="features">
-
-        <div className="feature-card" data-aos="zoom-in-up" data-aos-delay="0">
-          <div className="icon">💎</div>
-          <h3>Premium Quality</h3>
-          <p>Crafted using the finest materials and expert craftsmanship.</p>
-        </div>
-
-        <div className="feature-card" data-aos="zoom-in-up" data-aos-delay="150">
-          <div className="icon">✨</div>
-          <h3>Elegant Designs</h3>
-          <p>Luxury styles for every occasion.</p>
-        </div>
-
-        <div className="feature-card" data-aos="zoom-in-up" data-aos-delay="300">
-          <div className="icon">🚚</div>
-          <h3>Fast Delivery</h3>
-          <p>Secure and reliable delivery across India.</p>
-        </div>
-
-      </section>
-
-      {/* VISION & MISSION */}
-      <section className="vision-section">
-
-        <div className="vision-box" data-aos="fade-up-right" data-aos-delay="100">
-          <h3>Our Vision</h3>
-          <p>
-            To become a trusted jewellery brand known for elegance,
-            quality, and timeless craftsmanship.
-          </p>
-        </div>
-
-        <div className="vision-box" data-aos="fade-up-left" data-aos-delay="200">
-          <h3>Our Mission</h3>
-          <p>
-            To create beautiful jewellery that celebrates every moment
-            and makes every woman feel confident and special.
-          </p>
-        </div>
-
-      </section>
-
-      {/* STATS */}
-      <section className="stats">
-
-        <div data-aos="zoom-in" data-aos-delay="0">
-          <h2>500+</h2>
-          <p>Happy Customers</p>
-        </div>
-
-        <div data-aos="zoom-in" data-aos-delay="150">
-          <h2>1000+</h2>
-          <p>Jewellery Designs</p>
-        </div>
-
-        <div data-aos="zoom-in" data-aos-delay="300">
-          <h2>5+</h2>
-          <p>Years Experience</p>
-        </div>
-
-      </section>
-
-      {/* PROCESS */}
-      <section className="process">
-
-        <h2 data-aos="fade-up">Our Process</h2>
-
-        <div className="process-steps">
-
-          <div data-aos="fade-up" data-aos-delay="100">
-            <h4>Design</h4>
-            <p>Creative and unique ideas.</p>
+      {/* Story */}
+      <section className="about-story">
+        <div className="about-story-grid">
+          <div className="about-story-text">
+            <span className="section-label">Who We Are</span>
+            <h2 className="section-title">Crafting <em>Beauty</em><br />Since 2015</h2>
+            <p>AtoZ Jewellery was born from a simple belief — every woman deserves to look and feel beautiful, without compromise. Started in a small workshop in Himatnagar, Gujarat, we began with a vision to make premium artificial jewellery accessible to all.</p>
+            <p>Today, we are proud to offer over 500+ unique designs spanning necklaces, earrings, bangles, rings, payals, and complete bridal sets. Our collection celebrates India's rich jewellery heritage through oxidised silver work, kundan, meenakari, and stone-studded pieces.</p>
+            <p>Each piece at AtoZ Jewellery is thoughtfully designed and quality-checked to ensure it brings joy and confidence to the wearer.</p>
+            <Link to="/collection" className="btn-primary">Explore Collection <FiArrowRight /></Link>
           </div>
-
-         <div data-aos="fade-up" data-aos-delay="200">
-            <h4>Craft</h4>
-            <p>Handcrafted with precision.</p>
+          <div className="about-story-images">
+            <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427?w=600&q=80" alt="Our Story" className="story-img-1" />
+            <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400&q=80" alt="Jewellery" className="story-img-2" />
           </div>
-
-          <div data-aos="fade-up" data-aos-delay="300">
-            <h4>Deliver</h4>
-            <p>Carefully packed & delivered.</p>
-          </div>
-
         </div>
-
       </section>
 
-      {/* BRAND (WHY CHOOSE US) */}
-      <section className="brand-section" data-aos="fade-up" data-aos-duration="1000">
-        <h2>Why Choose Us</h2>
-        <p>
-          Trusted by thousands, Diya Creation is committed to delivering excellence,
-          authenticity, and unmatched customer experience.
-        </p>
+      {/* Stats */}
+      <section className="about-stats">
+        {[
+          { num: "10,000+", label: "Happy Customers" },
+          { num: "500+", label: "Unique Designs" },
+          { num: "15+", label: "Categories" },
+          { num: "9", label: "Years of Excellence" },
+        ].map((s, i) => (
+          <div key={i} className="about-stat">
+            <strong>{s.num}</strong>
+            <span>{s.label}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* Values */}
+      <section className="about-values">
+        <div className="about-values-inner">
+          <div className="section-header">
+            <span className="section-label">What We Stand For</span>
+            <h2 className="section-title">Our <em>Values</em></h2>
+          </div>
+          <div className="values-grid">
+            {values.map((v, i) => (
+              <div key={i} className="value-card">
+                <span className="value-icon">{v.icon}</span>
+                <h3>{v.title}</h3>
+                <p>{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="about-team">
+        <div className="about-team-inner">
+          <div className="section-header">
+            <span className="section-label">The People</span>
+            <h2 className="section-title">Meet Our <em>Team</em></h2>
+          </div>
+          <div className="team-grid">
+            {team.map((m, i) => (
+              <div key={i} className="team-card">
+                <div className="team-avatar">{m.initial}</div>
+                <h4>{m.name}</h4>
+                <span>{m.role}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="cta" data-aos="zoom-in" data-aos-duration="1200">
-        <h2>Explore Our Collection</h2>
-        <p>Find the perfect jewellery for every occasion.</p>
-
-        <button 
-  onClick={() => navigate("/productlist")}
-  data-aos="fade-up"
-  data-aos-delay="300"
->
-  Shop Now
-</button>
+      <section className="about-cta">
+        <h2>Ready to Find Your Perfect Piece?</h2>
+        <p>Explore our handcrafted collections and discover jewellery made for you</p>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <Link to="/collection" className="btn-primary">Shop Now <FiArrowRight /></Link>
+          <Link to="/contact" className="btn-outline" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}>Contact Us</Link>
+        </div>
       </section>
 
+      <Footer />
     </div>
   );
 };
